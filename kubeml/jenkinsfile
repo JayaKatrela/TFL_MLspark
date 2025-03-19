@@ -1,7 +1,7 @@
 pipeline {
     agent any
     environment {
-        DOCKER_IMAGE = 'uttamraj9/tflkubeml:latest'
+        DOCKER_IMAGE = 'jayakatrela/tflfoecaste:latest'
     }
     stages {
         stage('Clone Repository') {
