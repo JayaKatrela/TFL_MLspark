@@ -1,19 +1,19 @@
 pipeline {
     agent any
     environment {
-        DOCKER_IMAGE = 'uttamraj9/tflkubemlpr:latest'
+        DOCKER_IMAGE = 'jayakatrela/tflforecaste:latest'
     }
     stages {
         stage('Clone Repository') {
             steps {
-                git url: 'https://github.com/uttamraj9/TflDelaysForecasting.git', branch: 'main'
+                git url: 'https://github.com/JayaKatrela/TFL_MLspark.git', branch: 'main'
             }
         }
         stage('Prepare Files') {
             steps {
                 script {
                     // Copy necessary files to the Docker build context
-                    sh "cp -r /var/lib/jenkins/workspace/TfLKubeMl/kubemlPr/tflforecast kubemlPr/tflforecast"
+                    sh "cp -r /var/lib/jenkins/workspace/TfL_KubeMl/kubemlPr/tflforecast kubemlPr/tflforecast"
                 }
             }
         }
