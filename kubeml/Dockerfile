@@ -14,7 +14,8 @@ WORKDIR /app
 
 # Copy the PySpark application code into the container
 COPY forcasteml.py .
-COPY test/test_docker.sh /app/test_docker.sh  # Copy the Docker test script into the container
+COPY test/test_forecasteml.py /app/test/test_forecasteml.py
+COPY test/test_docker.sh /app/test/test_docker.sh  # Copy the Docker test script into the container
 
 # Give execute permission to the test script
 RUN chmod +x /app/test_docker.sh
