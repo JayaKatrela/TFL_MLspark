@@ -5,22 +5,23 @@ RUN apt-get update && \
     apt-get install -y python3 python3-pip && \
     rm -rf /var/lib/apt/lists/*
 
-# Install PySpark
+# Install PySpark and other dependencies
 RUN pip3 install pyspark==3.2.1
 RUN pip3 install findspark
 RUN pip3 install numpy
-# Set the working directory
+
+# Set the working directory inside the container
 WORKDIR /app
 
-# Copy the PySpark application code into the container
-COPY forcasteml.py .
-COPY test/test_forecasteml.py /app/test/test_forecasteml.py
-COPY test/test_docker.sh /app/test/test_docker.sh  # Copy the Docker test script into the container
+# Copy PySpark application code into the container
+COPY forcasteml.py .  # Copy the main application code
 
-# Give execute permission to the test script
-RUN chmod +x /app/test_docker.sh
+# Copy the unit tests and Docker test script into the container
+COPY test/test_forecasteml.py /app/test/test_forecasteml.py  # Copy the PySpark unit tests
+COPY test/test_docker.sh /app/test/test_docker.sh  # Copy the Docker test script
 
-# Set the entrypoint
+# Make the Docker test script executable
+RUN chmod +x /app/test/test_docker.sh
+
+# Set the entrypoint for the container
 CMD ["spark-submit", "--master", "local[*]", "forcasteml.py"]
-#CMD ["./test_docker.sh"]
-
