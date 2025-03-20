@@ -16,6 +16,9 @@ WORKDIR /app
 COPY forcasteml.py .
 COPY test/test_docker.sh /app/test_docker.sh  # Copy the Docker test script into the container
 
+# Give execute permission to the test script
+RUN chmod +x /app/test_docker.sh
+
 # Set the entrypoint
 CMD ["spark-submit", "--master", "local[*]", "forcasteml.py"]
 #CMD ["./test_docker.sh"]
