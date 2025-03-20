@@ -1,7 +1,7 @@
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: tflkubeml
+  name: tfl_kubeml
 spec:
   template:
     spec:
@@ -22,6 +22,6 @@ spec:
       volumes:
       - name: models-volume
         hostPath:
-          path: /var/lib/jenkins/workspace/TfLKubeMl/kubemlPr/  # Path on the host machine
+          path: /var/lib/jenkins/workspace/TfL_KubeMl/kubemlPr/  # Path on the host machine
           type: Directory               # Specify the type as Directory to ensure it's a directory mount
   backoffLimit: 4
