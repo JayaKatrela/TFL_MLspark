@@ -13,9 +13,9 @@ RUN pip3 install numpy
 WORKDIR /app
 
 # Copy the PySpark application code into the container
-COPY forecastTflMl.py .
+COPY forcasteml.py .
 COPY test/test_docker.sh /app/test_docker.sh  # Copy the Docker test script into the container
 
 # Set the entrypoint
-CMD ["spark-submit", "--master", "local[*]", "forecastTflMl.py"]
+CMD ["spark-submit", "--master", "local[*]", "forcasteml.py"]
 CMD ["./test_docker.sh"]
