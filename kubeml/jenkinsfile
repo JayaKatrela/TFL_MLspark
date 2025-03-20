@@ -36,7 +36,7 @@ pipeline {
             steps {
                 script {
                     echo "🚢 Running Docker tests..."
-                    sh 'pwd'
+                    sh 'chmod +x ./kubeml/test/test_docker.sh'
                     sh './kubeml/test/test_docker.sh'
                 }
             }
