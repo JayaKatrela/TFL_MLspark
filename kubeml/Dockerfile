@@ -19,3 +19,4 @@ COPY test/test_docker.sh /app/test_docker.sh  # Copy the Docker test script into
 # Set the entrypoint
 CMD ["spark-submit", "--master", "local[*]", "forcasteml.py"]
 CMD ["./test_docker.sh"]
+
