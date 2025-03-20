@@ -1,7 +1,7 @@
 apiVersion: batch/v1
 kind: CronJob
 metadata:
-  name: tflkubemlpr
+  name: tfl-kubemlpr
 spec:
   schedule: "*/100000 * * * *"  # This runs the job every 5 minutes
   jobTemplate:
@@ -11,5 +11,5 @@ spec:
         spec:
           containers:
           - name: pysparkmlpr
-            image: uttamraj9/tflkubemlpr:latest
+            image: jayakatrela/tfl-kubemlpr:latest
           restartPolicy: Never
