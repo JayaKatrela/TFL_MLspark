@@ -1,26 +1,29 @@
 pipeline {
     agent any
+
     environment {
         DOCKER_IMAGE = 'jayakatrela/tflforecaste:latest'
     }
+
     stages {
         stage('Clone Repository') {
             steps {
-                git url: https://github.com/JayaKatrela/TFL_MLspark.git, branch: 'main'
+                git url: 'https://github.com/JayaKatrela/TFL_MLspark.git', branch: 'main'
             }
         }
-     stage('Run Unit Tests') {
+
+        stage('Run Unit Tests') {
             steps {
                 script {
                     sh 'python3 -m unittest discover -s tests -p "test_forecasteml.py"'
                 }
             }
         }
-       
+
         stage('Build Docker Image') {
             steps {
                 script {
-                                        // Log in to Docker Hub
+                    // Log in to Docker Hub
                     withCredentials([usernamePassword(credentialsId: 'jayahub', usernameVariable: 'DOCKER_HUB_USERNAME', passwordVariable: 'DOCKER_HUB_PASSWORD')]) {
                         sh 'echo ${DOCKER_HUB_PASSWORD} | docker login -u ${DOCKER_HUB_USERNAME} --password-stdin'
                     }
@@ -28,6 +31,7 @@ pipeline {
                 }
             }
         }
+
         stage('Run Docker Unit Tests') {
             steps {
                 script {
@@ -36,6 +40,7 @@ pipeline {
                 }
             }
         }
+
         stage('Push Docker Image to Docker Hub') {
             steps {
                 script {
@@ -49,14 +54,12 @@ pipeline {
             steps {
                 script {
                     // Apply the Kubernetes deployment and service files
-                    sh '''
-                    kubectl apply -f kubeml/deployment.yaml
-                    '''
+                    sh 'kubectl apply -f kubeml/deployment.yaml'
                 }
             }
         }
-    }
-         stage('Run Kubernetes Tests') {
+
+        stage('Run Kubernetes Tests') {
             steps {
                 script {
                     echo "✅ Validating Kubernetes Job..."
@@ -65,10 +68,14 @@ pipeline {
             }
         }
     }
+
     post {
         success {
             // Output the full URL to access the Flask API
-            echo "Build succeeded. ML Model Created for TFL Train Delayes"
+            echo "Build succeeded. ML Model Created for TFL Train Delays"
+        }
+        failure {
+            echo "❌ Pipeline failed. Check logs for details."
         }
     }
 }
