@@ -20,8 +20,5 @@ COPY forcasteml.py /app/forcasteml.py
 COPY test/test_forecasteml.py /app/test/test_forecasteml.py
 COPY test/test_docker.sh /app/test/test_docker.sh
 
-# Make the Docker test script executable
-#RUN chmod +x /app/test/test_docker.sh
-
 # Set the entrypoint for the container
 CMD ["spark-submit", "--master", "local[*]", "forcasteml.py"]
