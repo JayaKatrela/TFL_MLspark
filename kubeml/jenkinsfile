@@ -36,7 +36,7 @@ pipeline {
             steps {
                 script {
                     echo "🚢 Running Docker tests..."
-                    sh './kubeml/test_docker.sh'
+                    sh './kubeml/test/test_docker.sh'
                 }
             }
         }
@@ -63,7 +63,7 @@ pipeline {
             steps {
                 script {
                     echo "✅ Validating Kubernetes Job..."
-                    sh './kubeml/test_k8s_job.sh'
+                    sh './kubeml/test/test_kubernetes.sh'
                 }
             }
         }
