@@ -14,7 +14,7 @@ WORKDIR /app
 
 # Copy the PySpark application code into the container
 COPY forecastTflMl.py .
-COPY tests/test_docker.sh /app/test_docker.sh  # Copy the Docker test script into the container
+COPY test/test_docker.sh /app/test_docker.sh  # Copy the Docker test script into the container
 
 # Set the entrypoint
 CMD ["spark-submit", "--master", "local[*]", "forecastTflMl.py"]
