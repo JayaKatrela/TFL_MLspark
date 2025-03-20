@@ -138,7 +138,7 @@ predictions = model.transform(test_data)
 predictions.select("features", "status_index_modified", "prediction").show(20)
 
 # Save the best model to the mounted volume
-model.save("/opt/spark-app/models/tflforecast")
+model.save("/opt/spark-app/models/tfl-forecast")
 
 # Stop the SparkSession
 spark.stop()
