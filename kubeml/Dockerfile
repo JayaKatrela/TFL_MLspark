@@ -22,7 +22,7 @@ COPY test/test_docker.sh /app/test/test_docker.sh  # Copy the Docker test script
 
 # Make the Docker test script executable
 RUN chmod +x /app/test/test_docker.sh
-chmod +x kubeml/test/test_docker.sh
+RUN chmod +x kubeml/test/test_docker.sh
 
 
 # Set the entrypoint for the container
