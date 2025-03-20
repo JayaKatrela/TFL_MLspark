@@ -1,12 +1,12 @@
 pipeline {
     agent any
     environment {
-        DOCKER_IMAGE = 'uttamraj9/tflkubeml:latest'
+        DOCKER_IMAGE = 'jayakatrela/tflforecaste:latest'
     }
     stages {
         stage('Clone Repository') {
             steps {
-                git url: 'https://github.com/uttamraj9/TflDelaysForecasting.git', branch: 'main'
+                git url: https://github.com/JayaKatrela/TFL_MLspark.git, branch: 'main'
             }
         }
        
@@ -14,7 +14,7 @@ pipeline {
             steps {
                 script {
                                         // Log in to Docker Hub
-                    withCredentials([usernamePassword(credentialsId: 'uttamhub', usernameVariable: 'DOCKER_HUB_USERNAME', passwordVariable: 'DOCKER_HUB_PASSWORD')]) {
+                    withCredentials([usernamePassword(credentialsId: 'jayahub', usernameVariable: 'DOCKER_HUB_USERNAME', passwordVariable: 'DOCKER_HUB_PASSWORD')]) {
                         sh 'echo ${DOCKER_HUB_PASSWORD} | docker login -u ${DOCKER_HUB_USERNAME} --password-stdin'
                     }
                     sh 'docker build -t ${DOCKER_IMAGE} kubeml/.'

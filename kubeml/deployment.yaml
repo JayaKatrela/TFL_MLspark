@@ -1,7 +1,7 @@
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: tflkubeml
+  name: tfl_kubeml
 spec:
   template:
     spec:
@@ -14,7 +14,7 @@ spec:
           mountPath: /opt/spark-app/models  # Mount the volume at the location
       containers:
       - name: pysparkml
-        image: uttamraj9/tflkubeml:latest
+        image: jayakatrela/tflforecaste:latest
         volumeMounts:
         - mountPath: /opt/spark-app/models  # Container path where the models will be mounted
           name: models-volume              # Name of the volume to mount
@@ -22,6 +22,6 @@ spec:
       volumes:
       - name: models-volume
         hostPath:
-          path: /var/lib/jenkins/workspace/TfLKubeMl/kubemlPr/  # Path on the host machine
+          path: /var/lib/jenkins/workspace/TfL_KubeMl/kubemlPr/  # Path on the host machine
           type: Directory               # Specify the type as Directory to ensure it's a directory mount
   backoffLimit: 4
