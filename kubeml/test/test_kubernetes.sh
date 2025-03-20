@@ -1,6 +1,6 @@
 #!/bin/bash
 
-JOB_NAME="tfl_kubeml"
+JOB_NAME="tfl-kubeml"
 
 echo "📊 Waiting for Kubernetes job to complete..."
 kubectl wait --for=condition=complete job/$JOB_NAME --timeout=300s
