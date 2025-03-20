@@ -13,12 +13,16 @@ RUN pip3 install numpy
 # Set the working directory inside the container
 WORKDIR /app
 
-# Copy PySpark application code into the container
-COPY forcasteml.py .  # Copy the main application code
+# Copy the main application code
+COPY forcasteml.py /app/forcasteml.py
 
 # Copy the unit tests and Docker test script into the container
-COPY test/test_forecasteml.py /app/test/test_forecasteml.py  # Copy the PySpark unit tests
-COPY test/test_docker.sh /app/test/test_docker.sh  # Copy the Docker test script
+COPY test/test_forecasteml.py /app/test/test_forecasteml.py
+COPY test/test_docker.sh /app/test/test_docker.sh
+
+# Make the Docker test script executable
+RUN chmod +x /app/test/test_docker.sh
+
 
 # Make the Docker test script executable
 RUN chmod +x /app/test/test_docker.sh
