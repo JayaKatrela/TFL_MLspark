@@ -31,7 +31,7 @@ spark = SparkSession.builder \
     .getOrCreate()
 
 # Read the data
-hive_df = spark.sql("SELECT timedetails,line,status FROM default.tfl_underground_result_fixed")
+hive_df = spark.sql("SELECT timedetails,line,status FROM default.tfl_underground_result_")
 hive_df.show(10)
 
 # Data Cleaning: Handle missing values
