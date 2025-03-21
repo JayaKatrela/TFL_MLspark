@@ -13,7 +13,7 @@ pipeline {
             steps {
                 script {
                     // Copy necessary files to the Docker build context
-                    sh "cp -r /var/lib/jenkins/workspace/TfL_KubeMl/kubemlPr/tflforecast kubemlPr/tflforecast"
+                    sh "cp -r /var/lib/jenkins/workspace/TfL_KubeMl/kubemlPr/tfl-forecast kubemlPr/tfl-forecast"
                 }
             }
         }
