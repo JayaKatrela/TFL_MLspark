@@ -59,8 +59,7 @@ pipeline {
                 }
             }
         }
-
-       
+    
     post {
         success {
             // Output the full URL to access the Flask API
@@ -70,5 +69,5 @@ pipeline {
             echo "❌ Pipeline failed. Check logs for details."
         }
     }
-}
+ }
 }
