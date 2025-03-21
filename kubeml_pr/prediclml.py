@@ -8,7 +8,6 @@ from pyspark.ml.regression import LinearRegression
 from pyspark.ml.evaluation import MulticlassClassificationEvaluator
 from pyspark.ml.classification import LogisticRegression
 from pyspark.ml.classification import LogisticRegressionModel
-
 from pyspark.ml.classification import LogisticRegression
 from pyspark.ml.evaluation import MulticlassClassificationEvaluator
 from pyspark.ml import Pipeline
