@@ -158,8 +158,8 @@ new_predictions = model.transform(new_data)
 new_predictions.select("line", "day_name", "status_index_modified", "features", "prediction", "probability").show(200, truncate=False)
 output_data=new_predictions.select("line", "day_name", "status_index_modified", "features", "prediction")
 
-spark.sql("DROP TABLE IF EXISTS tfllive.predictions_tfldelays")
-output_data.write.mode('overwrite').saveAsTable("tfllive.predictions_tfldelays")
+spark.sql("DROP TABLE IF EXISTS big_datajan2025.predictions_tfldelays")
+output_data.write.mode('overwrite').saveAsTable("big_datajan2025.predictions_tfldelays")
 
 # Stop the Spark session
 spark.stop()
