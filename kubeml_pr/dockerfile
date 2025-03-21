@@ -16,4 +16,4 @@ WORKDIR /app
 COPY prediclml.py.py .
 COPY tfl-forecast/ /tfl-forecast
 # Set the entrypoint
-CMD ["spark-submit", "--master", "local[*]", "prediclml.py.py"]
+CMD ["spark-submit", "--master", "local[*]", "prediclml.py"]
