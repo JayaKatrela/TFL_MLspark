@@ -13,7 +13,7 @@ RUN pip3 install numpy
 WORKDIR /app
 
 # Copy the PySpark application code into the container
-COPY predict_model.py .
+COPY prediclml.py.py .
 COPY tfl-forecast/ /tfl-forecast
 # Set the entrypoint
-CMD ["spark-submit", "--master", "local[*]", "predict_model.py"]
+CMD ["spark-submit", "--master", "local[*]", "prediclml.py.py"]
