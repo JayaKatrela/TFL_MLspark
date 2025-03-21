@@ -13,7 +13,7 @@ spec:
         - name: models-volume
           mountPath: /opt/spark-app/models  # Mount the volume at the location
       containers:
-      - name: forcasteml
+      - name: forecasteml
         image: jayakatrela/tflforecaste:latest
         volumeMounts:
         - mountPath: /opt/spark-app/models  # Container path where the models will be mounted
