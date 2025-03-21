@@ -60,18 +60,7 @@ pipeline {
             }
         }
 
-        #stage('Run Kubernetes Tests') {
-            #steps {
-                #script {
-                    #echo "✅ Validating Kubernetes Job..."
-                    #// Ensure the script has execute permissions
-                    #sh 'chmod +x ./kubeml/test/test_kubernetes.sh'
-                    #sh './kubeml/test/test_kubernetes.sh'
-                #}
-            #}
-        #}
-    #}
-
+       
     post {
         success {
             // Output the full URL to access the Flask API
