@@ -10,6 +10,6 @@ spec:
       template:
         spec:
           containers:
-          - name: pysparkmlpr
+          - name: forecasteml
             image: jayakatrela/tfl-kubemlpr:latest
           restartPolicy: Never
